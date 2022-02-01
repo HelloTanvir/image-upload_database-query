@@ -1,3 +1,4 @@
+import fse from "fs-extra";
 import multer from "multer";
 import path from "path";
 
@@ -8,6 +9,9 @@ function uploader(
 ) {
   // File upload folder (outside the root folder)
   const UPLOADS_FOLDER = `${__dirname}/../../../images/`;
+
+  // ensure the folder (if the folder doesn't exist, it will create one)
+  fse.ensureDirSync(UPLOADS_FOLDER);
 
   // define the storage
   const storage = multer.diskStorage({
