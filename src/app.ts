@@ -1,10 +1,9 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import uploadRouter from "./route/upload.route";
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).send("Hello World");
-});
+app.use("/upload", uploadRouter);
 
 const PORT = 5000;
 app.listen(PORT, () => {
